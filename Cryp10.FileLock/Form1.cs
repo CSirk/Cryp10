@@ -61,6 +61,8 @@ namespace Cryp10.FileLock
             var key = Guid.NewGuid().ToByteArray();
             var iv = Guid.NewGuid().ToByteArray();
 
+            Console.WriteLine(iv);
+
             byte[] encrypted = EncryptStringToBytesAes(text, key, iv);
             var ivAsString = System.Text.Encoding.Default.GetString(iv);
             var encAsString = System.Text.Encoding.Default.GetString(encrypted);
@@ -69,6 +71,10 @@ namespace Cryp10.FileLock
 
             richTextBox1.Text = text;
             richTextBox2.Text = encryptedString;
+
+            var decryptedString = DecryptStringFromBytesAew(encrypted, key, iv);
+
+            richTextBox3.Text = decryptedString;
         }
 
         static byte[] EncryptStringToBytesAes(string text, byte[] key, byte[] iv)
@@ -86,9 +92,9 @@ namespace Cryp10.FileLock
                 // Create the streams used for encryption.
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
+                    using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
                     {
-                        using (StreamWriter sw = new StreamWriter(cs))
+                        using (var sw = new StreamWriter(cs))
                         {
                             //Write all data to the stream.
                             sw.Write(text);
@@ -99,6 +105,37 @@ namespace Cryp10.FileLock
             }
 
             return encryptedText;
+        }
+
+        static string DecryptStringFromBytesAew(byte[] encryptedText, byte[] key, byte[] iv)
+        {
+            string decryptedText;
+
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+
+                // Create a decryptor to perform the stream transform.
+                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                // Create the streams used for decryption.
+                using (var ms = new MemoryStream(encryptedText))
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (var sr = new StreamReader(cs))
+                        {
+
+                            // Read the decrypted bytes from the decrypting stream
+                            // and place them in a string.
+                            decryptedText = sr.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+            return decryptedText;
         }
     }
 }
