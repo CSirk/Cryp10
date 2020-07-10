@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1E4D53E-34F1-4EAB-BCA4-78E2D0934F65}</ProjectGuid>
+    <ProjectGuid>{F24BE21D-18BC-4B88-AB9D-F8841E115A87}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Cryp10</RootNamespace>
-    <AssemblyName>Cryp10</AssemblyName>
+    <RootNamespace>Cryp10.FileLock</RootNamespace>
+    <AssemblyName>Cryp10.FileLock</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
