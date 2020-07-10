@@ -57,24 +57,27 @@ namespace Cryp10.FileLock
 
         private void encryptFilesButton_Click(object sender, EventArgs e)
         {
-            var text = "hello, i am cody";
-            var key = Guid.NewGuid().ToByteArray();
-            var iv = Guid.NewGuid().ToByteArray();
+            if (!String.IsNullOrEmpty(richTextBox1.Text))
+            {
+                var text = richTextBox1.Text;
+                richTextBox1.Text = "";
+                var key = Guid.NewGuid().ToByteArray();
+                var iv = Guid.NewGuid().ToByteArray();
 
-            Console.WriteLine(iv);
+                Console.WriteLine(iv);
 
-            byte[] encrypted = EncryptStringToBytesAes(text, key, iv);
-            var ivAsString = System.Text.Encoding.Default.GetString(iv);
-            var encAsString = System.Text.Encoding.Default.GetString(encrypted);
+                byte[] encrypted = EncryptStringToBytesAes(text, key, iv);
+                var ivAsString = System.Text.Encoding.Default.GetString(iv);
+                var encAsString = System.Text.Encoding.Default.GetString(encrypted);
 
-            var encryptedString = $"{ivAsString}_{encAsString}";
+                var encryptedString = $"{ivAsString}_{encAsString}";
 
-            richTextBox1.Text = text;
-            richTextBox2.Text = encryptedString;
+                richTextBox2.Text = encryptedString;
 
-            var decryptedString = DecryptStringFromBytesAew(encrypted, key, iv);
+                var decryptedString = DecryptStringFromBytesAes(encrypted, key, iv);
 
-            richTextBox3.Text = decryptedString;
+                richTextBox3.Text = decryptedString;
+            }
         }
 
         static byte[] EncryptStringToBytesAes(string text, byte[] key, byte[] iv)
@@ -107,7 +110,7 @@ namespace Cryp10.FileLock
             return encryptedText;
         }
 
-        static string DecryptStringFromBytesAew(byte[] encryptedText, byte[] key, byte[] iv)
+        static string DecryptStringFromBytesAes(byte[] encryptedText, byte[] key, byte[] iv)
         {
             string decryptedText;
 

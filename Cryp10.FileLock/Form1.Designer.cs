@@ -38,6 +38,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFilesToEncryptDialog
@@ -83,7 +84,7 @@
             // 
             // encryptFilesButton
             // 
-            this.encryptFilesButton.Location = new System.Drawing.Point(198, 313);
+            this.encryptFilesButton.Location = new System.Drawing.Point(198, 396);
             this.encryptFilesButton.Name = "encryptFilesButton";
             this.encryptFilesButton.Size = new System.Drawing.Size(146, 51);
             this.encryptFilesButton.TabIndex = 4;
@@ -97,7 +98,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 152);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 235);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(478, 21);
             this.richTextBox1.TabIndex = 5;
@@ -105,7 +106,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(12, 179);
+            this.richTextBox2.Location = new System.Drawing.Point(12, 262);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(478, 55);
             this.richTextBox2.TabIndex = 6;
@@ -113,17 +114,27 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(12, 240);
+            this.richTextBox3.Location = new System.Drawing.Point(12, 323);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(478, 58);
             this.richTextBox3.TabIndex = 7;
             this.richTextBox3.Text = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 219);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Write Text Here to Encrypt";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 376);
+            this.ClientSize = new System.Drawing.Size(542, 452);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
@@ -135,6 +146,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -150,6 +162,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Label label1;
     }
 }
 
